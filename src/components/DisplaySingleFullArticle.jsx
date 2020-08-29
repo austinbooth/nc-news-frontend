@@ -1,22 +1,27 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import DisplayArticleComments from "./DisplayArticleComments";
+import Loader from "./Loader";
 
 class DisplaySingleFullArticle extends Component {
-  state = { article: [], comments: [] };
+  state = { article: [], comments: [], isLoading: true };
 
   componentDidMount() {
     const { article_id } = this.props;
-    api
-      .getFullArticle(article_id)
-      .then((article) => this.setState({ article }));
 
-    api
-      .getAllArticleComments(article_id)
-      .then((comments) => this.setState({ comments }));
+    const promises = [
+      api.getFullArticle(article_id),
+      api.getAllArticleComments(article_id),
+    ];
+    Promise.all(promises).then(([article, comments]) =>
+      this.setState({ article, comments, isLoading: false })
+    );
   }
 
   render() {
+    const { isLoading } = this.state;
+    if (isLoading) return <Loader />;
+
     const {
       title,
       body,

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import ArticleCard from "./ArticleCard";
+import Loader from "./Loader";
 
 class DisplayArticles extends Component {
   state = { articles: [], isLoading: true };
@@ -12,7 +13,7 @@ class DisplayArticles extends Component {
       .then((articles) => this.setState({ articles, isLoading: false }));
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { topic } = this.props;
     const { isLoading } = this.state;
 
@@ -24,7 +25,7 @@ class DisplayArticles extends Component {
 
   render() {
     const { articles, isLoading } = this.state;
-    if (isLoading) return <div>Loading articles...</div>;
+    if (isLoading) return <Loader />;
 
     return (
       <div>
