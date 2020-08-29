@@ -34,11 +34,11 @@ const ArticleCard = ({ article }) => {
       <div className="articleCard">
         <h2>{title}</h2>
         <div className="article-card-metadata">
-          <h3>{topic}</h3>
           <h3>{`${dateObj.getDate()} 
               ${monthLookup[dateObj.getMonth()]} 
               ${dateObj.getFullYear()}
               `}</h3>
+          <h3>{topic}</h3>
           <h3>{votes} votes</h3>
           <h3>{comment_count} comments</h3>
         </div>
