@@ -25,3 +25,7 @@ export const getAllArticleComments = (article_id) => {
     .get(`articles/${article_id}/comments`)
     .then(({ data: { comments } }) => comments);
 };
+
+export const getUser = (username) => {
+  return instance.get(`users/${username}`).then(({ data: { user } }) => user);
+};

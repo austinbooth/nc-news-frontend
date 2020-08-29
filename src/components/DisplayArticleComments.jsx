@@ -5,7 +5,7 @@ const DisplayArticleComments = ({ comments }) => {
     <div>
       {comments.map((comment) => {
         const { comment_id, author, votes, created_at, body } = comment;
-        return <div key={comment_id}>{body}</div>;
+        return <div key={comment_id} className="article-comment">{body}</div>;
       })}
     </div>
   );

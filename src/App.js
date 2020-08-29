@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Header />
       <Nav />
-      <Router>
+      <Router className="router">
         <DisplayArticles path="/articles" />
         <DisplayArticles path="/articles/:topic" />
         <DisplaySingleFullArticle path="/article/:article_id" />
