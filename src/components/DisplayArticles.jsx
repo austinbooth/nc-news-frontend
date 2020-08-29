@@ -16,11 +16,14 @@ class DisplayArticles extends Component {
   componentDidUpdate(prevProps) {
     const { topic } = this.props;
     const { isLoading } = this.state;
+    console.log("isLoading -->", isLoading);
 
-    if (topic !== prevProps.topic)
+    if (topic !== prevProps.topic) {
+      this.setState({ isLoading: true });
       api
         .getAllArticles(topic)
         .then((articles) => this.setState({ articles, isLoading: false }));
+    }
   }
 
   render() {
