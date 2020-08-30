@@ -3,22 +3,32 @@ import { Link } from "@reach/router";
 import * as api from "../api";
 
 class Nav extends Component {
-  state = { topics: [] };
+  state = { topics: [], active: undefined };
   componentDidMount() {
     api.getAllTopics().then((topics) => this.setState({ topics }));
   }
   render() {
-    const { topics } = this.state;
+    const { topics, active } = this.state;
 
     return (
       <nav className="nav">
         <Link to="/">
-          <button>All</button>
+          <button
+            className={this.state.active === undefined && "selected"}
+            onClick={() => this.setState({ ...topics, active: undefined })}
+          >
+            All
+          </button>
         </Link>
         {topics.map((topic) => {
           return (
             <Link to={`/${topic.slug}`} key={`/${topic.slug}`}>
-              <button>{topic.slug}</button>
+              <button
+                className={active === topic.slug && "selected"}
+                onClick={() => this.setState({ ...topics, active: topic.slug })}
+              >
+                {topic.slug}
+              </button>
             </Link>
           );
         })}

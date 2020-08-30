@@ -16,7 +16,6 @@ class DisplayArticles extends Component {
   componentDidUpdate(prevProps) {
     const { topic } = this.props;
     const { isLoading } = this.state;
-    console.log("isLoading -->", isLoading);
 
     if (topic !== prevProps.topic) {
       this.setState({ isLoading: true });
