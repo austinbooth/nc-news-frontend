@@ -12,8 +12,8 @@ function App() {
       <Header />
       <Nav />
       <Router className="router">
-        <DisplayArticles path="/articles" />
-        <DisplayArticles path="/articles/:topic" />
+        <DisplayArticles path="/" />
+        <DisplayArticles path="/:topic" />
         <DisplaySingleFullArticle path="/article/:article_id" />
       </Router>
     </div>

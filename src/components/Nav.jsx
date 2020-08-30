@@ -13,17 +13,11 @@ class Nav extends Component {
     return (
       <nav className="nav">
         <Link to="/">
-          <button>Home</button>
-        </Link>
-        <Link to="/articles">
-          <button>All articles</button>
+          <button>All</button>
         </Link>
         {topics.map((topic) => {
           return (
-            <Link
-              to={`/articles/${topic.slug}`}
-              key={`/articles/${topic.slug}`}
-            >
+            <Link to={`/${topic.slug}`} key={`/${topic.slug}`}>
               <button>{topic.slug}</button>
             </Link>
           );
