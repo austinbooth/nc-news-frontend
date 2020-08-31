@@ -101,6 +101,51 @@ button.selected {
   text-align: justify;
 }
 
-.author-image {
-  width: 150px;
+.article-author-image {
+  grid-area: article-author-image;
+  width: 90px;
+}
+
+.article-author {
+  grid-area: article-author;
+}
+
+.article-topic {
+  grid-area: article-topic;
+}
+
+.article-published {
+  grid-area: article-published;
+}
+
+.article-votes {
+  grid-area: article-votes;
+}
+
+.article-meta-data {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas:
+    "article-author-image article-author article-topic"
+    "article-author-image article-published article-votes";
+  text-align: left;
+  align-items: center;
+}
+.article-author,
+.article-topic {
+  margin: 0;
+}
+
+.article-comments-heading {
+  text-align: left;
+}
+
+.article-comment {
+  /* border: solid; */
+  text-align: justify;
+  padding: 15px;
+  margin: 0 auto 40px;
+  background-color: #efefef;
+  border-radius: 4px;
+  box-shadow: 5px 10px #888888;
 }

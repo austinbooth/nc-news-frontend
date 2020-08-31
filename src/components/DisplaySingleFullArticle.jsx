@@ -8,16 +8,19 @@ class DisplaySingleFullArticle extends Component {
 
   componentDidMount() {
     const { article_id } = this.props;
-    const author = this.props.location.search.slice(8);
 
     const promises = [
       api.getFullArticle(article_id),
       api.getAllArticleComments(article_id),
-      api.getUser(author),
     ];
-    Promise.all(promises).then(([article, comments, author]) =>
-      this.setState({ article, comments, author, isLoading: false })
-    );
+    Promise.all(promises)
+      .then(([article, comments]) => {
+        const { author } = article;
+        return Promise.all([article, comments, api.getUser(author)]);
+      })
+      .then(([article, comments, author]) =>
+        this.setState({ article, comments, author, isLoading: false })
+      );
   }
 
   render() {
@@ -34,21 +37,27 @@ class DisplaySingleFullArticle extends Component {
       created_at,
     } = this.state.article;
     const { avatar_url } = this.state.author;
-    const dateObj = new Date(created_at);
-    console.log(avatar_url);
+    const date = api.formatDate(created_at);
+
     return (
       <div className="full-article">
         <h2>{title}</h2>
         <section className="article-meta-data">
-          <h3>By: {author}</h3>
-          <h3>Topic: {topic}</h3>
-          <h3>Published: {dateObj.toString()}</h3>
-          <h3>Number of votes: {votes}</h3>
-          <img src={avatar_url} alt="the author" className="author-image"></img>
+          <h3 className="article-author">By: {author}</h3>
+          <h3 className="article-topic">Topic: {topic}</h3>
+          <h3 className="article-published">Published: {date}</h3>
+          <h3 className="article-votes">Votes: {votes}</h3>
+          <img
+            src={avatar_url}
+            alt="the author"
+            className="article-author-image"
+          ></img>
         </section>
         <p>{body}</p>
         <section>
-          <h2>Comments ({comment_count}):</h2>
+          <h2 className="article-comments-heading">
+            Comments ({comment_count}):
+          </h2>
           <DisplayArticleComments comments={this.state.comments} />
         </section>
       </div>
