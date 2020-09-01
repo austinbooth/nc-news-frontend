@@ -149,3 +149,7 @@ button.selected {
   border-radius: 4px;
   box-shadow: 5px 10px #888888;
 }
+
+ul {
+  list-style-type: none;
+}

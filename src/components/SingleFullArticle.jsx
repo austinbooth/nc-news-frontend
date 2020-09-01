@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import * as api from "../api";
-import DisplayArticleComments from "./DisplayArticleComments";
+import AllArticleComments from "./AllArticleComments";
 import Loader from "./Loader";
 
-class DisplaySingleFullArticle extends Component {
+class SingleFullArticle extends Component {
   state = {
     article: [],
     comments: [],
@@ -13,7 +13,7 @@ class DisplaySingleFullArticle extends Component {
   };
 
   componentDidMount() {
-    const { article_id } = this.props;
+    const { article_id, changeNavButtonSelected } = this.props;
 
     const promises = [
       api.getFullArticle(article_id),
@@ -21,7 +21,8 @@ class DisplaySingleFullArticle extends Component {
     ];
     Promise.all(promises)
       .then(([article, comments]) => {
-        const { author } = article;
+        const { author, topic } = article;
+        changeNavButtonSelected(topic);
         return Promise.all([article, comments, api.getUser(author)]);
       })
       .then(([article, comments, author]) =>
@@ -48,16 +49,18 @@ class DisplaySingleFullArticle extends Component {
 
     const modifyVotes = (votes) => {
       api.patchVotes("article", article_id, votes);
-      this.setState(({ article, comments, author, isLoading }) => {
-        article.votes += votes;
-        return {
-          article,
-          comments,
-          author,
-          optimisticVotes: votes,
-          isLoading,
-        };
-      });
+      this.setState(
+        ({ article, comments, author, optimisticVotes, isLoading }) => {
+          article.votes += votes;
+          return {
+            article,
+            comments,
+            author,
+            optimisticVotes: optimisticVotes + votes,
+            isLoading,
+          };
+        }
+      );
     };
 
     return (
@@ -93,11 +96,11 @@ class DisplaySingleFullArticle extends Component {
           <h2 className="article-comments-heading">
             Comments ({comment_count}):
           </h2>
-          <DisplayArticleComments comments={this.state.comments} />
+          <AllArticleComments comments={this.state.comments} />
         </section>
       </div>
     );
   }
 }
 
-export default DisplaySingleFullArticle;
+export default SingleFullArticle;

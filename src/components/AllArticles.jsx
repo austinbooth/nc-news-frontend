@@ -3,7 +3,7 @@ import * as api from "../api";
 import ArticleCard from "./ArticleCard";
 import Loader from "./Loader";
 
-class DisplayArticles extends Component {
+class AllArticles extends Component {
   state = { articles: [], isLoading: true };
   componentDidMount() {
     const { topic } = this.props;
@@ -39,4 +39,4 @@ class DisplayArticles extends Component {
   }
 }
 
-export default DisplayArticles;
+export default AllArticles;
