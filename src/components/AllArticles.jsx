@@ -10,20 +10,46 @@ class AllArticles extends Component {
     const { isLoading } = this.state;
     api
       .getAllArticles(topic)
-      .then((articles) => this.setState({ articles, isLoading: false }));
+      .then((articles) =>
+        this.setState({ articles, isLoading: false, sortByValue: "" })
+      );
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
     const { isLoading } = this.state;
 
     if (topic !== prevProps.topic) {
       this.setState({ isLoading: true });
-      api
-        .getAllArticles(topic)
-        .then((articles) => this.setState({ articles, isLoading: false }));
+      api.getAllArticles(topic).then((articles) =>
+        this.setState({
+          articles,
+          isLoading: false,
+          sortByValue: "created_at",
+        })
+      );
+    }
+
+    if (this.state.sortByValue !== prevState.sortByValue) {
+      this.setState({ isLoading: true });
+      api.getAllArticles(topic, this.state.sortByValue).then((articles) =>
+        this.setState({
+          articles,
+          isLoading: false,
+          sortByValue: this.state.sortByValue,
+        })
+      );
     }
   }
+
+  handleSortByChange = (event) => {
+    const { value: sortByValue } = event.target;
+    const { topic } = this.props;
+
+    this.setState((previousState) => {
+      return { ...previousState, sortByValue };
+    });
+  };
 
   render() {
     const { articles, isLoading } = this.state;
@@ -31,14 +57,14 @@ class AllArticles extends Component {
 
     return (
       <>
-        <label for="sort-articles">Sort articles by </label>
+        <label htmlFor="sort-articles">Sort articles by </label>
         <select
           id="sort-articles"
           name="sort-articles"
           value={this.state.sortByValue}
-          onChange={(event) => console.log(event.target.value)}
+          onChange={this.handleSortByChange}
         >
-          <option value="date_created">Date</option>
+          <option value="created_at">Date</option>
           <option value="comment_count">Comments</option>
           <option value="votes">Votes</option>
         </select>

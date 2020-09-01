@@ -8,9 +8,9 @@ export const getAllTopics = () => {
   return instance.get("topics").then(({ data: { topics } }) => topics);
 };
 
-export const getAllArticles = (topic) => {
+export const getAllArticles = (topic, sort_by) => {
   return instance
-    .get("articles", { params: { topic } })
+    .get("articles", { params: { topic, sort_by } })
     .then(({ data: { articles } }) => articles);
 };
 
