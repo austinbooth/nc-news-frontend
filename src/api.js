@@ -52,3 +52,7 @@ export const formatDate = (created_at) => {
               ${dateObj.getFullYear()}
               `;
 };
+
+export const patchVotes = (modify, id, inc_votes) => {
+  return instance.patch(`${modify}s/${id}`, { inc_votes });
+};

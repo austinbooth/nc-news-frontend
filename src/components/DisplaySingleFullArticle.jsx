@@ -4,7 +4,13 @@ import DisplayArticleComments from "./DisplayArticleComments";
 import Loader from "./Loader";
 
 class DisplaySingleFullArticle extends Component {
-  state = { article: [], comments: [], author: {}, isLoading: true };
+  state = {
+    article: [],
+    comments: [],
+    author: {},
+    optimisticVotes: 0,
+    isLoading: true,
+  };
 
   componentDidMount() {
     const { article_id } = this.props;
@@ -28,6 +34,7 @@ class DisplaySingleFullArticle extends Component {
     if (isLoading) return <Loader />;
 
     const {
+      article_id,
       title,
       body,
       votes,
@@ -38,6 +45,20 @@ class DisplaySingleFullArticle extends Component {
     } = this.state.article;
     const { avatar_url } = this.state.author;
     const date = api.formatDate(created_at);
+
+    const modifyVotes = (votes) => {
+      api.patchVotes("article", article_id, votes);
+      this.setState(({ article, comments, author, isLoading }) => {
+        article.votes += votes;
+        return {
+          article,
+          comments,
+          author,
+          optimisticVotes: votes,
+          isLoading,
+        };
+      });
+    };
 
     return (
       <div className="full-article">
@@ -52,6 +73,20 @@ class DisplaySingleFullArticle extends Component {
             alt="the author"
             className="article-author-image"
           ></img>
+        </section>
+        <section className="up-down-vote-buttons">
+          <button
+            disabled={this.state.optimisticVotes === 1}
+            onClick={() => modifyVotes(1)}
+          >
+            Up vote
+          </button>
+          <button
+            disabled={this.state.optimisticVotes === -1}
+            onClick={() => modifyVotes(-1)}
+          >
+            Down vote
+          </button>
         </section>
         <p>{body}</p>
         <section>

@@ -14,7 +14,7 @@ class Nav extends Component {
       <nav className="nav">
         <Link to="/">
           <button
-            className={this.state.active === undefined && "selected"}
+            className={this.state.active === undefined ? "selected" : undefined}
             onClick={() => this.setState({ ...topics, active: undefined })}
           >
             All
@@ -24,7 +24,7 @@ class Nav extends Component {
           return (
             <Link to={`/${topic.slug}`} key={`/${topic.slug}`}>
               <button
-                className={active === topic.slug && "selected"}
+                className={active === topic.slug ? "selected" : undefined}
                 onClick={() => this.setState({ ...topics, active: topic.slug })}
               >
                 {topic.slug}
