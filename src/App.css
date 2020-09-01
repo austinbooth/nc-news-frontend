@@ -153,3 +153,7 @@ button.selected {
 ul {
   list-style-type: none;
 }
+
+select {
+  margin-bottom: 30px;
+}
