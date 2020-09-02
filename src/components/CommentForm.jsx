@@ -11,11 +11,13 @@ class CommentForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
     const { comment } = this.state;
     const { loggedIn, article_id, addComment } = this.props;
     api
       .postComment(loggedIn, article_id, comment)
       .then((comment) => addComment(comment));
+    document.querySelector("textarea").value = "";
   };
 
   render() {
