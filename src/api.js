@@ -62,3 +62,7 @@ export const postComment = (username, article_id, body) => {
     .post(`articles/${article_id}/comments`, { username, body })
     .then(({ data: { comment } }) => comment);
 };
+
+export const deleteComment = (comment_id) => {
+  return instance.delete(`comments/${comment_id}`);
+};

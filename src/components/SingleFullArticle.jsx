@@ -6,7 +6,7 @@ import CommentForm from "./CommentForm";
 
 class SingleFullArticle extends Component {
   state = {
-    article: [],
+    article: {},
     comments: [],
     author: {},
     optimisticVotes: 0,
@@ -37,6 +37,18 @@ class SingleFullArticle extends Component {
       article.comment_count = `${+article.comment_count + 1}`;
       return { ...currentState, comments: [newComment, ...comments], article };
     });
+  };
+
+  removeComment = (comment_id) => {
+    const comments = this.state.comments.filter(
+      (comment) => comment.comment_id !== comment_id
+    );
+    this.setState((currentState) => {
+      const { article } = currentState;
+      article.comment_count = `${+article.comment_count - 1}`;
+      return { ...currentState, comments, article };
+    });
+    api.deleteComment(comment_id);
   };
 
   render() {
@@ -114,7 +126,11 @@ class SingleFullArticle extends Component {
           <h2 className="article-comments-heading">
             Comments ({comment_count}):
           </h2>
-          <AllArticleComments comments={this.state.comments} />
+          <AllArticleComments
+            comments={this.state.comments}
+            loggedIn={this.props.loggedIn}
+            removeComment={this.removeComment}
+          />
         </section>
       </div>
     );

@@ -27,7 +27,7 @@ class CommentCard extends Component {
           <h4>By {author}</h4>
           <h4>At {date}</h4>
           <h4>{votes} votes</h4>
-          <section className="up-down-vote-buttons">
+          <section className="comment-buttons">
             <button
               disabled={this.state.optimisticVotes === 1}
               onClick={() => modifyVotes(1)}
@@ -40,6 +40,14 @@ class CommentCard extends Component {
             >
               Down vote
             </button>
+            {this.state.author === this.props.loggedIn && (
+              <button
+                className="delete-btn"
+                onClick={() => this.props.removeComment(comment_id)}
+              >
+                Delete comment
+              </button>
+            )}
           </section>
         </section>
       </li>

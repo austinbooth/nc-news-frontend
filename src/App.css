@@ -176,3 +176,7 @@ textarea {
 form h4 {
   text-align: left;
 }
+
+.delete-btn {
+  background-color: red;
+}
