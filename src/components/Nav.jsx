@@ -6,18 +6,15 @@ import AllArticles from "./AllArticles";
 import SingleFullArticle from "./SingleFullArticle";
 
 class Nav extends Component {
-  state = { topics: [], active: undefined };
+  state = { topics: [] };
+
   componentDidMount() {
     api.getAllTopics().then((topics) => this.setState({ topics }));
   }
 
-  changeNavButtonSelected = (active) => {
-    const { topics } = this.state;
-    this.setState({ active });
-  };
-
   render() {
-    const { topics, active } = this.state;
+    const { topics } = this.state;
+    const { active, changeNavButtonSelected } = this.props;
 
     return (
       <>
@@ -25,9 +22,12 @@ class Nav extends Component {
           <Link to="/">
             <button
               className={
-                this.state.active === undefined ? "selected" : undefined
+                active === undefined ? "selected" : undefined
               }
-              onClick={() => this.setState({ ...topics, active: undefined })}
+              onClick={() => {
+                changeNavButtonSelected(undefined);
+                this.setState({ ...topics });
+              }}
             >
               All
             </button>
@@ -37,9 +37,10 @@ class Nav extends Component {
               <Link to={`/${topic.slug}`} key={`/${topic.slug}`}>
                 <button
                   className={active === topic.slug ? "selected" : undefined}
-                  onClick={() =>
-                    this.setState({ ...topics, active: topic.slug })
-                  }
+                  onClick={() => {
+                    changeNavButtonSelected(topic.slug);
+                    this.setState({ ...topics });
+                  }}
                 >
                   {topic.slug}
                 </button>
@@ -47,14 +48,6 @@ class Nav extends Component {
             );
           })}
         </nav>
-        <Router className="router">
-          <AllArticles path="/" />
-          <AllArticles path="/:topic" />
-          <SingleFullArticle
-            path="/article/:article_id"
-            changeNavButtonSelected={this.changeNavButtonSelected}
-          />
-        </Router>
       </>
     );
   }

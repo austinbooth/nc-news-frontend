@@ -46,9 +46,14 @@
   }
 }
 
-h1 {
+header h1 {
   color: #7d0828;
   background: lightgray;
+}
+
+header h4 {
+  text-align: right;
+  margin: 0;
 }
 
 nav {
@@ -156,4 +161,18 @@ ul {
 
 select {
   margin-bottom: 30px;
+}
+
+label textarea {
+  vertical-align: top;
+}
+
+textarea {
+  margin-left: 10px;
+  height: 200px;
+  width: 80%;
+}
+
+form h4 {
+  text-align: left;
 }

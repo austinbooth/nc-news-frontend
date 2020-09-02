@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../api";
 import AllArticleComments from "./AllArticleComments";
 import Loader from "./Loader";
+import { render } from "@testing-library/react";
 
 class SingleFullArticle extends Component {
   state = {
@@ -28,6 +29,15 @@ class SingleFullArticle extends Component {
       .then(([article, comments, author]) =>
         this.setState({ article, comments, author, isLoading: false })
       );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.loggedIn !== this.props.loggedIn) {
+      console.log("changing...");
+      this.setState((currentState) => {
+        return { ...currentState };
+      });
+    }
   }
 
   render() {
@@ -92,6 +102,19 @@ class SingleFullArticle extends Component {
           </button>
         </section>
         <p>{body}</p>
+
+        {this.props.loggedIn && (
+          <form>
+            <h4>Comment as {this.loggedIn}</h4>
+            <label htmlFor="body">
+              Comment:
+              <textarea id="body" name="body"></textarea>
+            </label>
+            <br />
+            <button>Comment</button>
+          </form>
+        )}
+
         <section>
           <h2 className="article-comments-heading">
             Comments ({comment_count}):
