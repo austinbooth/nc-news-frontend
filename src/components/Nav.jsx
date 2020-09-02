@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../api";
-import { Router } from "@reach/router";
-import AllArticles from "./AllArticles";
-import SingleFullArticle from "./SingleFullArticle";
 
 class Nav extends Component {
   state = { topics: [] };

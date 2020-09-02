@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as api from "../api";
 import AllArticleComments from "./AllArticleComments";
 import Loader from "./Loader";
-import { render } from "@testing-library/react";
+import CommentForm from "./CommentForm";
 
 class SingleFullArticle extends Component {
   state = {
@@ -31,13 +31,13 @@ class SingleFullArticle extends Component {
       );
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.loggedIn !== this.props.loggedIn) {
-      this.setState((currentState) => {
-        return { ...currentState };
-      });
-    }
-  }
+  addComment = (newComment) => {
+    this.setState((currentState) => {
+      const { comments, article } = currentState;
+      article.comment_count = `${+article.comment_count + 1}`;
+      return { ...currentState, comments: [newComment, ...comments], article };
+    });
+  };
 
   render() {
     const { isLoading } = this.state;
@@ -103,15 +103,11 @@ class SingleFullArticle extends Component {
         <p>{body}</p>
 
         {this.props.loggedIn && (
-          <form>
-            <h4>Comment as {this.loggedIn}</h4>
-            <label htmlFor="body">
-              Comment:
-              <textarea id="body" name="body"></textarea>
-            </label>
-            <br />
-            <button>Comment</button>
-          </form>
+          <CommentForm
+            loggedIn={this.props.loggedIn}
+            article_id={article_id}
+            addComment={this.addComment}
+          />
         )}
 
         <section>

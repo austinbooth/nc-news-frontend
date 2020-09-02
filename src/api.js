@@ -56,3 +56,9 @@ export const formatDate = (created_at) => {
 export const patchVotes = (modify, id, inc_votes) => {
   return instance.patch(`${modify}s/${id}`, { inc_votes });
 };
+
+export const postComment = (username, article_id, body) => {
+  return instance
+    .post(`articles/${article_id}/comments`, { username, body })
+    .then(({ data: { comment } }) => comment);
+};
