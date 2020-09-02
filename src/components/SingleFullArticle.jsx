@@ -33,7 +33,6 @@ class SingleFullArticle extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.loggedIn !== this.props.loggedIn) {
-      console.log("changing...");
       this.setState((currentState) => {
         return { ...currentState };
       });
