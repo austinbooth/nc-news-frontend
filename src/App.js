@@ -24,12 +24,13 @@ class App extends Component {
         <Header
           loggedIn={this.state.loggedIn}
           changeLoggedInUser={this.changeLoggedInUser}
-        />
-        <Nav
-          loggedIn={this.state.loggedIn}
-          active={this.state.active}
-          changeNavButtonSelected={this.changeNavButtonSelected}
-        />
+        >
+          <Nav
+            loggedIn={this.state.loggedIn}
+            active={this.state.active}
+            changeNavButtonSelected={this.changeNavButtonSelected}
+          />
+        </Header>
         <Router className="router">
           <AllArticles path="/" />
           <AllArticles path="/topic/:topic/articles" />

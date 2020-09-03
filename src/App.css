@@ -1,3 +1,7 @@
+body {
+  background-image: url("./images/background2.jpg");
+}
+
 .App {
   text-align: center;
   display: grid;
@@ -10,6 +14,12 @@
 
 .header {
   grid-area: header;
+  /* border: solid 1px #888888cc; */
+  border-bottom: solid 2px;
+
+  /* border-radius: 8px; */
+  margin-bottom: 15px;
+  /* background-color: #efefef; */
 }
 
 .nav {
@@ -48,7 +58,8 @@
 
 header h1 {
   color: #7d0828;
-  background: lightgray;
+  border-top: solid black 2px;
+  margin-bottom: 0;
 }
 
 header h4 {
@@ -57,7 +68,12 @@ header h4 {
 }
 
 nav {
+  text-align: center;
   margin: 0 0 20px 0;
+}
+
+nav a {
+  margin: 12px;
 }
 
 a {
@@ -73,7 +89,6 @@ button {
   border: 1px solid grey;
   border-radius: 12px;
   padding: 5px 10px;
-  margin: 12px;
   background-color: rgba(0, 0, 0, 0.05);
   cursor: pointer;
   font-size: 15px;
@@ -91,7 +106,7 @@ button.selected {
 }
 
 .articleCard {
-  border: maroon solid;
+  border: gray solid;
   text-align: left;
   padding: 0 20px;
 }
@@ -100,6 +115,13 @@ button.selected {
   color: gray;
   display: flex;
   justify-content: space-between;
+}
+
+.full-article {
+  border: solid 1px #888888cc;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #efefef;
 }
 
 .full-article p {
@@ -145,7 +167,8 @@ button.selected {
   text-align: left;
 }
 
-.article-comment {
+.article-comment,
+.articleCard {
   /* border: solid; */
   text-align: justify;
   padding: 15px;
@@ -153,6 +176,7 @@ button.selected {
   background-color: #efefef;
   border-radius: 4px;
   box-shadow: 5px 10px #888888;
+  width: 80%;
 }
 
 ul {
@@ -183,4 +207,29 @@ form h4 {
 
 .error {
   font-size: 30px;
+}
+
+.up-down-vote-buttons button {
+  margin: 12px;
+}
+
+h4 button {
+  margin-left: 10px;
+}
+
+header h4 {
+  margin-bottom: 12px;
+}
+
+form button {
+  margin-top: 15px;
+}
+
+.comment-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-buttons button {
+  margin: 0 12px;
 }

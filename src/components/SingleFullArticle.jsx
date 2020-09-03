@@ -65,7 +65,7 @@ class SingleFullArticle extends Component {
   render() {
     const { isLoading, err } = this.state;
     if (isLoading) return <Loader />;
-    if (err) return <ErrorDisplay err={err}/>;
+    if (err) return <ErrorDisplay err={err} />;
 
     const {
       article_id,
@@ -97,35 +97,36 @@ class SingleFullArticle extends Component {
     };
 
     return (
-      <div className="full-article">
-        <h2>{title}</h2>
-        <section className="article-meta-data">
-          <h3 className="article-author">By: {author}</h3>
-          <h3 className="article-topic">Topic: {topic}</h3>
-          <h3 className="article-published">Published: {date}</h3>
-          <h3 className="article-votes">Votes: {votes}</h3>
-          <img
-            src={avatar_url}
-            alt="the author"
-            className="article-author-image"
-          ></img>
-        </section>
-        <section className="up-down-vote-buttons">
-          <button
-            disabled={this.state.optimisticVotes === 1}
-            onClick={() => modifyVotes(1)}
-          >
-            Up vote
-          </button>
-          <button
-            disabled={this.state.optimisticVotes === -1}
-            onClick={() => modifyVotes(-1)}
-          >
-            Down vote
-          </button>
-        </section>
-        <p>{body}</p>
-
+      <>
+        <div className="full-article">
+          <h2>{title}</h2>
+          <section className="article-meta-data">
+            <h3 className="article-author">By: {author}</h3>
+            <h3 className="article-topic">Topic: {topic}</h3>
+            <h3 className="article-published">Published: {date}</h3>
+            <h3 className="article-votes">Votes: {votes}</h3>
+            <img
+              src={avatar_url}
+              alt="the author"
+              className="article-author-image"
+            ></img>
+          </section>
+          <section className="up-down-vote-buttons">
+            <button
+              disabled={this.state.optimisticVotes === 1}
+              onClick={() => modifyVotes(1)}
+            >
+              Up vote
+            </button>
+            <button
+              disabled={this.state.optimisticVotes === -1}
+              onClick={() => modifyVotes(-1)}
+            >
+              Down vote
+            </button>
+          </section>
+          <p>{body}</p>
+        </div>
         {this.props.loggedIn && (
           <CommentForm
             loggedIn={this.props.loggedIn}
@@ -134,7 +135,7 @@ class SingleFullArticle extends Component {
           />
         )}
 
-        <section>
+        <section className="article-comments">
           <h2 className="article-comments-heading">
             Comments ({comment_count}):
           </h2>
@@ -144,7 +145,7 @@ class SingleFullArticle extends Component {
             removeComment={this.removeComment}
           />
         </section>
-      </div>
+      </>
     );
   }
 }

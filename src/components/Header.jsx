@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = ({ loggedIn, changeLoggedInUser }) => {
+const Header = ({ loggedIn, changeLoggedInUser, children }) => {
   return (
     <header className="header">
       <h1>NC News</h1>
@@ -18,6 +18,7 @@ const Header = ({ loggedIn, changeLoggedInUser }) => {
           </button>
         )}
       </h4>
+        {children}
     </header>
   );
 };
