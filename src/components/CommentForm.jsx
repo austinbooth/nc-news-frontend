@@ -16,8 +16,11 @@ class CommentForm extends Component {
     const { loggedIn, article_id, addComment } = this.props;
     api
       .postComment(loggedIn, article_id, comment)
-      .then((comment) => addComment(comment));
-    document.querySelector("textarea").value = "";
+      .then((comment) => addComment(comment))
+      .then(() => {
+        document.querySelector("textarea").value = "";
+        this.setState({ comment: null });
+      });
   };
 
   render() {
@@ -30,6 +33,7 @@ class CommentForm extends Component {
             onChange={this.handleChange}
             id="body"
             name="body"
+            required
           ></textarea>
         </label>
         <br />
