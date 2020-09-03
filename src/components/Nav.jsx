@@ -18,9 +18,7 @@ class Nav extends Component {
         <nav className="nav">
           <Link to="/">
             <button
-              className={
-                active === undefined ? "selected" : undefined
-              }
+              className={active === undefined ? "selected" : undefined}
               onClick={() => {
                 changeNavButtonSelected(undefined);
                 this.setState({ ...topics });
@@ -31,7 +29,7 @@ class Nav extends Component {
           </Link>
           {topics.map((topic) => {
             return (
-              <Link to={`/${topic.slug}`} key={`/${topic.slug}`}>
+              <Link to={`/topic/${topic.slug}/articles`} key={`/${topic.slug}`}>
                 <button
                   className={active === topic.slug ? "selected" : undefined}
                   onClick={() => {

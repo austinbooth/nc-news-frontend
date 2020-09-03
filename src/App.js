@@ -6,6 +6,7 @@ import { render } from "@testing-library/react";
 import { Router } from "@reach/router";
 import AllArticles from "./components/AllArticles";
 import SingleFullArticle from "./components/SingleFullArticle";
+import ErrorDisplay from "./components/ErrorDisplay";
 
 class App extends Component {
   state = { loggedIn: "jessjelly", active: undefined };
@@ -32,12 +33,13 @@ class App extends Component {
         />
         <Router className="router">
           <AllArticles path="/" />
-          <AllArticles path="/:topic" />
+          <AllArticles path="/topic/:topic/articles" />
           <SingleFullArticle
             path="/article/:article_id"
             changeNavButtonSelected={this.changeNavButtonSelected}
             loggedIn={this.state.loggedIn}
           />
+          <ErrorDisplay default err={{ status: 404, msg: "Path not found"}} />
         </Router>
       </div>
     );
