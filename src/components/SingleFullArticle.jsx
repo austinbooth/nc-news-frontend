@@ -3,6 +3,7 @@ import * as api from "../api";
 import AllArticleComments from "./AllArticleComments";
 import Loader from "./Loader";
 import CommentForm from "./CommentForm";
+import ErrorDisplay from "./ErrorDisplay";
 
 class SingleFullArticle extends Component {
   state = {
@@ -11,6 +12,7 @@ class SingleFullArticle extends Component {
     author: {},
     optimisticVotes: 0,
     isLoading: true,
+    err: null,
   };
 
   componentDidMount() {
@@ -28,7 +30,16 @@ class SingleFullArticle extends Component {
       })
       .then(([article, comments, author]) =>
         this.setState({ article, comments, author, isLoading: false })
-      );
+      )
+      .catch(({ response }) => {
+        const { status } = response;
+        const {
+          data: { msg },
+        } = response;
+        this.setState({ isLoading: false, err: { msg, status } }, () =>
+          console.log(this.state)
+        );
+      });
   }
 
   addComment = (newComment) => {
@@ -52,8 +63,9 @@ class SingleFullArticle extends Component {
   };
 
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, err } = this.state;
     if (isLoading) return <Loader />;
+    if (err) return <ErrorDisplay err={err}/>;
 
     const {
       article_id,

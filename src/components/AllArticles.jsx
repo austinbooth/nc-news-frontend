@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import * as api from "../api";
 import ArticleCard from "./ArticleCard";
 import Loader from "./Loader";
+import ErrorDisplay from "./ErrorDisplay";
 
 class AllArticles extends Component {
-  state = { articles: [], isLoading: true, sortByValue: "" };
+  state = { articles: [], isLoading: true, sortByValue: "", err: null };
+
   componentDidMount() {
     const { topic } = this.props;
     const { isLoading } = this.state;
@@ -12,12 +14,18 @@ class AllArticles extends Component {
       .getAllArticles(topic)
       .then((articles) =>
         this.setState({ articles, isLoading: false, sortByValue: "" })
-      );
+      )
+      .catch(({ response }) => {
+        const { status } = response;
+        const {
+          data: { msg },
+        } = response;
+        this.setState({ isLoading: false, err: { msg, status } });
+      });
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
-    const { isLoading } = this.state;
 
     if (topic !== prevProps.topic) {
       this.setState({ isLoading: true });
@@ -26,6 +34,7 @@ class AllArticles extends Component {
           articles,
           isLoading: false,
           sortByValue: "created_at",
+          err: null,
         })
       );
     }
@@ -52,8 +61,9 @@ class AllArticles extends Component {
   };
 
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, err } = this.state;
     if (isLoading) return <Loader />;
+    if (err) return <ErrorDisplay err={err} />;
 
     return (
       <>

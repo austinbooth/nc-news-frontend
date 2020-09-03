@@ -4,8 +4,6 @@ const Header = ({ loggedIn, changeLoggedInUser }) => {
   return (
     <header className="header">
       <h1>NC News</h1>
-      {/* <h4>{loggedIn && <>{`logged in as ${loggedIn}`}</>}</h4> */}
-      {/* <button onClick={() => changeLoggedInUser(undefined)}>log out</button> */}
       <h4>
         {loggedIn ? (
           <>

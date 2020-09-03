@@ -180,3 +180,7 @@ form h4 {
 .delete-btn {
   background-color: red;
 }
+
+.error {
+  font-size: 30px;
+}
