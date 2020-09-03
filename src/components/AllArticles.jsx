@@ -9,7 +9,6 @@ class AllArticles extends Component {
 
   componentDidMount() {
     const { topic } = this.props;
-    const { isLoading } = this.state;
     api
       .getAllArticles(topic)
       .then((articles) =>
@@ -53,7 +52,6 @@ class AllArticles extends Component {
 
   handleSortByChange = (event) => {
     const { value: sortByValue } = event.target;
-    const { topic } = this.props;
 
     this.setState((previousState) => {
       return { ...previousState, sortByValue };

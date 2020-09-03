@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
-import { render } from "@testing-library/react";
 import { Router } from "@reach/router";
 import AllArticles from "./components/AllArticles";
 import SingleFullArticle from "./components/SingleFullArticle";
@@ -39,7 +38,7 @@ class App extends Component {
             changeNavButtonSelected={this.changeNavButtonSelected}
             loggedIn={this.state.loggedIn}
           />
-          <ErrorDisplay default err={{ status: 404, msg: "Path not found"}} />
+          <ErrorDisplay default err={{ status: 404, msg: "Path not found" }} />
         </Router>
       </div>
     );

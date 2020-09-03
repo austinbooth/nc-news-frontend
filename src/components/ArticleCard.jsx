@@ -17,6 +17,7 @@ const ArticleCard = ({ article }) => {
     <Link to={`/article/${article_id}`} className="article-card">
       <div className="articleCard">
         <h2>{title}</h2>
+        <h3>By {author}</h3>
         <div className="article-card-metadata">
           <h3>{api.formatDate(created_at)}</h3>
           <h3>{topic}</h3>
