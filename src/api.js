@@ -47,10 +47,9 @@ const monthLookup = {
 
 export const formatDate = (created_at) => {
   const dateObj = new Date(created_at);
-  return `${dateObj.getDate()} 
-              ${monthLookup[dateObj.getMonth()]} 
-              ${dateObj.getFullYear()}
-              `;
+  return `${dateObj.getDate()} ${
+    monthLookup[dateObj.getMonth()]
+  } ${dateObj.getFullYear()}`;
 };
 
 export const patchVotes = (modify, id, inc_votes) => {
