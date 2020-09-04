@@ -25,7 +25,7 @@ class CommentCard extends Component {
         {body}
         <section className="comment-meta-data">
           <h4>By {author}</h4>
-          <h4>At {date}</h4>
+          <h4>{date}</h4>
           <h4>{votes} votes</h4>
           <section className="comment-buttons">
             <button
