@@ -63,6 +63,12 @@ class SingleFullArticle extends Component {
     api.deleteComment(comment_id);
   };
 
+  toggleLoader = () => {
+    this.setState((currentState) => {
+      return { ...currentState, isLoading: !currentState.isLoading };
+    });
+  };
+
   render() {
     const { isLoading, err } = this.state;
     if (isLoading) return <Loader />;
@@ -135,6 +141,7 @@ class SingleFullArticle extends Component {
             loggedIn={this.props.loggedIn}
             article_id={article_id}
             addComment={this.addComment}
+            toggleLoader={this.toggleLoader}
           />
         )}
 

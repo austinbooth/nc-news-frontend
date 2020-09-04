@@ -13,13 +13,14 @@ class CommentForm extends Component {
     event.preventDefault();
 
     const { comment } = this.state;
-    const { loggedIn, article_id, addComment } = this.props;
+    const { loggedIn, article_id, addComment, toggleLoader } = this.props;
+    toggleLoader();
     api
       .postComment(loggedIn, article_id, comment)
       .then((comment) => addComment(comment))
       .then(() => {
-        document.querySelector("textarea").value = "";
         this.setState({ comment: null });
+        toggleLoader();
       });
   };
 
