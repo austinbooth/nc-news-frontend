@@ -47,21 +47,21 @@ class CommentCard extends Component {
           <section className="comment-meta-data">
             <p>By {author}</p>
             <p>{date}</p>
+            {this.props.loggedIn && (
+              <>
+                {this.state.author === this.props.loggedIn && (
+                  <button
+                    className="delete-btn"
+                    onClick={() => this.props.removeComment(comment_id)}
+                  >
+                    Delete comment
+                  </button>
+                )}
+              </>
+            )}
           </section>
           <p className="comment-body">{body}</p>
         </section>
-        {this.props.loggedIn && (
-          <>
-            {this.state.author === this.props.loggedIn && (
-              <button
-                className="delete-btn"
-                onClick={() => this.props.removeComment(comment_id)}
-              >
-                Delete comment
-              </button>
-            )}
-          </>
-        )}
       </li>
     );
   }
