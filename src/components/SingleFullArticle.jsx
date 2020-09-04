@@ -108,10 +108,10 @@ class SingleFullArticle extends Component {
         <div className="full-article">
           <h2>{title}</h2>
           <section className="article-meta-data">
-            <h3 className="article-author">By: {author}</h3>
-            <h3 className="article-topic">Topic: {topic}</h3>
-            <h3 className="article-published">Published: {date}</h3>
-            <h3 className="article-votes">Votes: {votes}</h3>
+            <p className="article-author">By: {author}</p>
+            <p className="article-topic">Topic: {topic}</p>
+            <p className="article-published">Published: {date}</p>
+            <p className="article-votes">Votes: {votes}</p>
             <img
               src={avatar_url}
               alt="the author"

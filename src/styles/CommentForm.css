@@ -1,15 +1,17 @@
-label textarea {
+/* label textarea {
   vertical-align: top;
-}
+} */
 
 textarea {
   margin-left: 10px;
   height: 75px;
-  width: 80%;
+  width: 90%;
 }
 
 form h4 {
   text-align: left;
+  margin-bottom: 10px;
+  margin-left: 41px;
 }
 
 form button {

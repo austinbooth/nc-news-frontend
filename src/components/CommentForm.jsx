@@ -28,15 +28,12 @@ class CommentForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <h4>Comment as {this.props.loggedIn}</h4>
-        <label htmlFor="body">
-          Comment:
-          <textarea
-            onChange={this.handleChange}
-            id="body"
-            name="body"
-            required
-          ></textarea>
-        </label>
+        <textarea
+          onChange={this.handleChange}
+          id="body"
+          name="body"
+          required
+        ></textarea>
         <br />
         <button type="submit">Comment</button>
       </form>

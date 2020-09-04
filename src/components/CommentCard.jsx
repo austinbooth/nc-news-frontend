@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import { formatDate } from "../utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 class CommentCard extends Component {
   state = { ...this.props.comment, optimisticVotes: 0 };
@@ -22,26 +24,34 @@ class CommentCard extends Component {
 
     return (
       <li className="article-comment">
-        {body}
-        <section className="comment-meta-data">
-          <h4>By {author}</h4>
-          <h4>{date}</h4>
-          <h4>{votes} votes</h4>
-        </section>
-        {this.props.loggedIn && (
+        <section className="vote-buttons-and-comment-body-section">
           <section className="comment-buttons">
             <button
+              className="voteButton"
+              aria-label="Up vote"
               disabled={this.state.optimisticVotes === 1}
               onClick={() => modifyVotes(1)}
             >
-              Up vote
+              <FontAwesomeIcon icon={faCaretUp} size="2x" />
             </button>
+            {votes}
             <button
+              className="voteButton"
+              aria-label="Down vote"
               disabled={this.state.optimisticVotes === -1}
               onClick={() => modifyVotes(-1)}
             >
-              Down vote
+              <FontAwesomeIcon icon={faCaretDown} size="2x" />
             </button>
+          </section>
+          <section className="comment-meta-data">
+            <p>By {author}</p>
+            <p>{date}</p>
+          </section>
+          <p className="comment-body">{body}</p>
+        </section>
+        {this.props.loggedIn && (
+          <>
             {this.state.author === this.props.loggedIn && (
               <button
                 className="delete-btn"
@@ -50,7 +60,7 @@ class CommentCard extends Component {
                 Delete comment
               </button>
             )}
-          </section>
+          </>
         )}
       </li>
     );
