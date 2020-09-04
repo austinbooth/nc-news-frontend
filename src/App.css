@@ -60,6 +60,7 @@ header h1 {
   color: #7d0828;
   border-top: solid black 2px;
   margin-bottom: 0;
+  padding-top: 15px;
 }
 
 header h4 {

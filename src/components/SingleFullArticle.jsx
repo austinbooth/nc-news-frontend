@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import {formatDate} from "../utils";
 import AllArticleComments from "./AllArticleComments";
 import Loader from "./Loader";
 import CommentForm from "./CommentForm";
@@ -78,7 +79,7 @@ class SingleFullArticle extends Component {
       created_at,
     } = this.state.article;
     const { avatar_url } = this.state.author;
-    const date = api.formatDate(created_at);
+    const date = formatDate(created_at);
 
     const modifyVotes = (votes) => {
       api.patchVotes("article", article_id, votes);

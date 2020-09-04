@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import * as api from "../api";
+import { formatDate } from "../utils";
 
 const ArticleCard = ({ article }) => {
   const {
@@ -19,7 +19,7 @@ const ArticleCard = ({ article }) => {
         <h2>{title}</h2>
         <h3>By {author}</h3>
         <div className="article-card-metadata">
-          <h3>{api.formatDate(created_at)}</h3>
+          <h3>{formatDate(created_at)}</h3>
           <h3>{topic}</h3>
           <h3>{votes} votes</h3>
           <h3>{comment_count} comments</h3>

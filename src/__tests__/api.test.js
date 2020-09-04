@@ -1,4 +1,4 @@
-import { formatDate } from "../api";
+import { formatDate } from "../utils";
 
 describe("formatDate", () => {
   it("returns a correctly formatted date when passed a date object for a date in the past", () => {

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import { formatDate } from "../utils";
 
 class CommentCard extends Component {
   state = { ...this.props.comment, optimisticVotes: 0 };
 
   render() {
     const { comment_id, author, votes, created_at, body } = this.state;
-    const date = api.formatDate(created_at);
+    const date = formatDate(created_at);
 
     const modifyVotes = (votes) => {
       api.patchVotes("comment", comment_id, votes);
