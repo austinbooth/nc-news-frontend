@@ -31,3 +31,8 @@
 .comment-buttons button {
   margin: 0 12px;
 }
+
+.comment-meta-data {
+  display: flex;
+  justify-content: space-around;
+}

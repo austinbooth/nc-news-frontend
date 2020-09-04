@@ -27,6 +27,8 @@ class CommentCard extends Component {
           <h4>By {author}</h4>
           <h4>{date}</h4>
           <h4>{votes} votes</h4>
+        </section>
+        {this.props.loggedIn && (
           <section className="comment-buttons">
             <button
               disabled={this.state.optimisticVotes === 1}
@@ -49,7 +51,7 @@ class CommentCard extends Component {
               </button>
             )}
           </section>
-        </section>
+        )}
       </li>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
-import {formatDate} from "../utils";
+import { formatDate } from "../utils";
 import AllArticleComments from "./AllArticleComments";
 import Loader from "./Loader";
 import CommentForm from "./CommentForm";
@@ -112,20 +112,22 @@ class SingleFullArticle extends Component {
               className="article-author-image"
             ></img>
           </section>
-          <section className="up-down-vote-buttons">
-            <button
-              disabled={this.state.optimisticVotes === 1}
-              onClick={() => modifyVotes(1)}
-            >
-              Up vote
-            </button>
-            <button
-              disabled={this.state.optimisticVotes === -1}
-              onClick={() => modifyVotes(-1)}
-            >
-              Down vote
-            </button>
-          </section>
+          {this.props.loggedIn && (
+            <section className="up-down-vote-buttons">
+              <button
+                disabled={this.state.optimisticVotes === 1}
+                onClick={() => modifyVotes(1)}
+              >
+                Up vote
+              </button>
+              <button
+                disabled={this.state.optimisticVotes === -1}
+                onClick={() => modifyVotes(-1)}
+              >
+                Down vote
+              </button>
+            </section>
+          )}
           <p>{body}</p>
         </div>
         {this.props.loggedIn && (
