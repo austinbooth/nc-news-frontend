@@ -1,0 +1,54 @@
+.article-meta-data {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas:
+    "article-author-image article-author article-topic"
+    "article-author-image article-published article-votes";
+  text-align: left;
+  align-items: center;
+}
+
+.article-author-image {
+  grid-area: article-author-image;
+  width: 90px;
+}
+
+.article-author {
+  grid-area: article-author;
+}
+
+.article-topic {
+  grid-area: article-topic;
+}
+
+.article-published {
+  grid-area: article-published;
+}
+
+.article-votes {
+  grid-area: article-votes;
+}
+
+.article-author,
+.article-topic {
+  margin: 0;
+}
+
+.article-comments-heading {
+  text-align: left;
+}
+
+.full-article {
+  border: solid 1px #888888cc;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #efefef;
+}
+
+.full-article p {
+  text-align: justify;
+}
+
+.up-down-vote-buttons button {
+  margin: 12px;
+}

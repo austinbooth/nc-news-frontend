@@ -1,0 +1,17 @@
+label textarea {
+  vertical-align: top;
+}
+
+textarea {
+  margin-left: 10px;
+  height: 75px;
+  width: 80%;
+}
+
+form h4 {
+  text-align: left;
+}
+
+form button {
+  margin-top: 15px;
+}

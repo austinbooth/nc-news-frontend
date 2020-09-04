@@ -1,0 +1,39 @@
+body {
+  background-image: url("../images/background.jpg");
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  color: #545a61;
+}
+
+button {
+  border: 1px solid grey;
+  border-radius: 12px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:focus {
+  outline: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+select {
+  /* for the drop down sort menu */
+  margin-bottom: 30px;
+  margin-top: 15px;
+}
+
+.error {
+  font-size: 30px;
+}

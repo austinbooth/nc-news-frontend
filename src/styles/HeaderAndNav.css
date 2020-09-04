@@ -1,0 +1,41 @@
+.header {
+  border-bottom: solid 2px;
+  margin-bottom: 15px;
+}
+
+header h1 {
+  color: #a41212;
+  border-top: solid black 2px;
+  margin-bottom: 0;
+  padding-top: 15px;
+}
+
+header h4 {
+  text-align: right;
+  margin: 0;
+}
+
+nav {
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+nav a {
+  margin: 12px;
+}
+
+h4 button {
+  /* log out button */
+  margin-left: 10px;
+}
+
+header h4 {
+  margin-bottom: 12px;
+}
+
+button.selected {
+  background-color: #a41212;
+  border: 1px solid #7d0828;
+  color: white;
+  font-weight: bold;
+}

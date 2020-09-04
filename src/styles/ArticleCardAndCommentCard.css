@@ -1,0 +1,30 @@
+.article-card-metadata {
+  color: gray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-comment,
+.articleCard {
+  border: solid 2px grey;
+  text-align: justify;
+  padding: 15px;
+  margin: 0 auto 40px;
+  background-color: #efefef;
+  border-radius: 4px;
+  box-shadow: 5px 10px #888888;
+  width: 80%;
+}
+
+.delete-btn {
+  background-color: red;
+}
+
+.comment-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-buttons button {
+  margin: 0 12px;
+}

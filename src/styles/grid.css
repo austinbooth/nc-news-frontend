@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 800px 1fr;
+  grid-template-areas:
+    ". header ."
+    ". nav ."
+    ". router .";
+}
+
+.header {
+  grid-area: header;
+  border-bottom: solid 2px;
+  margin-bottom: 15px;
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.router {
+  grid-area: router;
+}

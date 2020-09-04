@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./styles/App.css";
+import "./styles/HeaderAndNav.css";
+import "./styles/Loader.css";
+import "./styles/grid.css";
+import "./styles/SingleFullArticle.css";
+import "./styles/CommentForm.css";
+import "./styles/ArticleCardAndCommentCard.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import { Router } from "@reach/router";
