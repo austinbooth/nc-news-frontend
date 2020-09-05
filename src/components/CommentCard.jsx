@@ -31,9 +31,7 @@ class CommentCard extends Component {
 
     return (
       <li className="article-comment">
-        {/* {this.state.triedToCommentNotLoggedIn && <LoginPrompt />} */}
         <section className="vote-buttons-and-comment-body-section">
-          {/* {this.props.loggedIn && ( */}
           <section className="comment-buttons">
             <button
               className="voteButton"
@@ -53,7 +51,6 @@ class CommentCard extends Component {
               <FontAwesomeIcon icon={faCaretDown} size="2x" />
             </button>
           </section>
-          {/* )} */}
           <section className="comment-meta-data">
             <p>By {author}</p>
             <p>{date}</p>

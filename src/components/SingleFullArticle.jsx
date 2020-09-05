@@ -122,7 +122,6 @@ class SingleFullArticle extends Component {
               alt="the author"
               className="article-author-image"
             ></img>
-            {/* {this.props.loggedIn && ( */}
             <section className="up-down-vote-buttons">
               <button
                 aria-label="Up vote"
@@ -140,7 +139,6 @@ class SingleFullArticle extends Component {
                 <FontAwesomeIcon icon={faCaretDown} size="2x" />
               </button>
             </section>
-            {/* )} */}
           </section>
 
           <p>{body}</p>
