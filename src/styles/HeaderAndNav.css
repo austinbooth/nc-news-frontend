@@ -10,9 +10,10 @@ header h1 {
   padding-top: 15px;
 }
 
-header h4 {
+header p {
   text-align: right;
   margin: 0;
+  font-weight: bold;
 }
 
 nav {
@@ -24,12 +25,12 @@ nav a {
   margin: 12px;
 }
 
-h4 button {
+p button {
   /* log out button */
   margin-left: 10px;
 }
 
-header h4 {
+header p {
   margin-bottom: 12px;
 }
 

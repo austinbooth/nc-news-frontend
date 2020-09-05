@@ -29,9 +29,14 @@ ul {
 }
 
 select {
-  /* for the drop down sort menu */
+  /* for the drop down all articles sort menu */
   margin-bottom: 30px;
   margin-top: 15px;
+}
+
+label,
+select {
+  font-size: 16px;
 }
 
 .error {

@@ -4,7 +4,7 @@ const Header = ({ loggedIn, changeLoggedInUser, children }) => {
   return (
     <header className="header">
       <h1>NC News</h1>
-      <h4>
+      <p>
         {loggedIn ? (
           <>
             {`Logged in as ${loggedIn}`}
@@ -18,7 +18,7 @@ const Header = ({ loggedIn, changeLoggedInUser, children }) => {
             </button>
           </>
         )}
-      </h4>
+      </p>
       {children}
     </header>
   );
