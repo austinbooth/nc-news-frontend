@@ -1,0 +1,16 @@
+.login-prompt {
+  /* position: absolute;
+  left: 50%;
+  top: 50%; */
+  z-index: 1;
+
+  /* margin: -75px 0 0 -75px; */
+  /* background: tomato; */
+  color: #7d0828;
+  border: double 3px #d81414;
+  margin: 20px 0;
+}
+
+.login-prompt p {
+  font-weight: bold;
+}

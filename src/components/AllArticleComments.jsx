@@ -1,7 +1,12 @@
 import React from "react";
 import CommentCard from "./CommentCard";
 
-const AllArticleComments = ({ comments, loggedIn, removeComment }) => {
+const AllArticleComments = ({
+  comments,
+  loggedIn,
+  removeComment,
+  setLoginPrompt,
+}) => {
   return (
     <ul>
       {comments.map((comment) => {
@@ -11,6 +16,7 @@ const AllArticleComments = ({ comments, loggedIn, removeComment }) => {
             key={comment.comment_id}
             loggedIn={loggedIn}
             removeComment={removeComment}
+            setLoginPrompt={setLoginPrompt}
           />
         );
       })}

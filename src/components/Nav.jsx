@@ -18,9 +18,9 @@ class Nav extends Component {
         <nav className="nav">
           <Link to="/">
             <button
-              className={active === undefined ? "selected" : undefined}
+              className={active === null ? "selected" : undefined}
               onClick={() => {
-                changeNavButtonSelected(undefined);
+                changeNavButtonSelected(null);
                 this.setState({ ...topics });
               }}
             >

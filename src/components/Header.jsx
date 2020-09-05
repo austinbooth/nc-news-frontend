@@ -8,9 +8,7 @@ const Header = ({ loggedIn, changeLoggedInUser, children }) => {
         {loggedIn ? (
           <>
             {`logged in as ${loggedIn}`}
-            <button onClick={() => changeLoggedInUser(undefined)}>
-              Log out
-            </button>
+            <button onClick={() => changeLoggedInUser(null)}>Log out</button>
           </>
         ) : (
           <button onClick={() => changeLoggedInUser("jessjelly")}>
@@ -18,7 +16,7 @@ const Header = ({ loggedIn, changeLoggedInUser, children }) => {
           </button>
         )}
       </h4>
-        {children}
+      {children}
     </header>
   );
 };

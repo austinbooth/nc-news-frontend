@@ -5,6 +5,8 @@ import AllArticleComments from "./AllArticleComments";
 import Loader from "./Loader";
 import CommentForm from "./CommentForm";
 import ErrorDisplay from "./ErrorDisplay";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 class SingleFullArticle extends Component {
   state = {
@@ -88,19 +90,23 @@ class SingleFullArticle extends Component {
     const date = formatDate(created_at);
 
     const modifyVotes = (votes) => {
-      api.patchVotes("article", article_id, votes);
-      this.setState(
-        ({ article, comments, author, optimisticVotes, isLoading }) => {
-          article.votes += votes;
-          return {
-            article,
-            comments,
-            author,
-            optimisticVotes: optimisticVotes + votes,
-            isLoading,
-          };
-        }
-      );
+      if (this.props.loggedIn) {
+        api.patchVotes("article", article_id, votes);
+        this.setState(
+          ({ article, comments, author, optimisticVotes, isLoading }) => {
+            article.votes += votes;
+            return {
+              article,
+              comments,
+              author,
+              optimisticVotes: optimisticVotes + votes,
+              isLoading,
+            };
+          }
+        );
+      } else {
+        this.props.setLoginPrompt(true);
+      }
     };
 
     return (
@@ -109,31 +115,34 @@ class SingleFullArticle extends Component {
           <h2>{title}</h2>
           <section className="article-meta-data">
             <p className="article-author">By: {author}</p>
-            <p className="article-topic">Topic: {topic}</p>
-            <p className="article-published">Published: {date}</p>
-            <p className="article-votes">Votes: {votes}</p>
+            <p className="article-topic">{topic}</p>
+            <p className="article-published">{date}</p>
             <img
               src={avatar_url}
               alt="the author"
               className="article-author-image"
             ></img>
-          </section>
-          {this.props.loggedIn && (
+            {/* {this.props.loggedIn && ( */}
             <section className="up-down-vote-buttons">
               <button
+                aria-label="Up vote"
                 disabled={this.state.optimisticVotes === 1}
                 onClick={() => modifyVotes(1)}
               >
-                Up vote
+                <FontAwesomeIcon icon={faCaretUp} size="2x" />
               </button>
+              {votes}
               <button
+                aria-label="Down vote"
                 disabled={this.state.optimisticVotes === -1}
                 onClick={() => modifyVotes(-1)}
               >
-                Down vote
+                <FontAwesomeIcon icon={faCaretDown} size="2x" />
               </button>
             </section>
-          )}
+            {/* )} */}
+          </section>
+
           <p>{body}</p>
         </div>
         {this.props.loggedIn && (
@@ -153,6 +162,7 @@ class SingleFullArticle extends Component {
             comments={this.state.comments}
             loggedIn={this.props.loggedIn}
             removeComment={this.removeComment}
+            setLoginPrompt={this.props.setLoginPrompt}
           />
         </section>
       </>
