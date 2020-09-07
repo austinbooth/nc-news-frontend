@@ -1,16 +1,17 @@
+.loader-container {
+  display: grid;
+  grid-template-rows: 75vh;
+}
+
 .loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
+  justify-self: center;
+  align-self: center;
   z-index: 1;
   width: 150px;
   height: 150px;
-  margin: -75px 0 0 -75px;
   border: 16px solid rgb(207, 206, 206);
   border-radius: 50%;
   border-top: 16px solid maroon;
-  width: 120px;
-  height: 120px;
   -webkit-animation: spin 2s linear infinite;
   animation: loader-spin 2s linear infinite;
 }

@@ -22,12 +22,18 @@ nav {
 }
 
 nav a {
-  margin: 12px;
+  margin: 1.3333%;
 }
 
 p button {
   /* log out button */
   margin-left: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  p button {
+    margin-right: 15px;
+  }
 }
 
 header p {

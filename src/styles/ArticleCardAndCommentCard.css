@@ -1,7 +1,31 @@
 .article-card-metadata {
-  color: gray;
+  color: #545a61;
   display: flex;
   justify-content: space-between;
+}
+
+@media only screen and (max-width: 768px) {
+  p.author {
+    grid-area: author;
+  }
+  p.date {
+    grid-area: date;
+  }
+  p.topic {
+    grid-area: topic;
+  }
+  p.votes {
+    grid-area: votes;
+  }
+  p.comments {
+    grid-area: comments;
+  }
+  .article-card-metadata {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "author date topic" "votes comments .";
+  }
 }
 
 .article-comment,
@@ -18,11 +42,18 @@
 
 .vote-buttons-and-comment-body-section {
   display: grid;
-  grid-template-columns: 1fr 18fr;
-  grid-template-rows: 1fr auto;
+  grid-template-columns: max-content auto;
+  grid-template-rows: auto auto;
+  column-gap: 15px;
   grid-template-areas:
     "comment-buttons comment-meta-data"
     "comment-buttons comment-body";
+}
+
+@media only screen and (max-width: 768px) {
+  .vote-buttons-and-comment-body-section {
+    column-gap: 20px;
+  }
 }
 
 .comment-body {
@@ -62,7 +93,7 @@
 }
 
 .comment-meta-data p {
-  margin-right: 20px;
+  margin-right: 3%;
   font-size: 14px;
   color: #545a61;
   margin-bottom: 10px;
@@ -73,4 +104,10 @@
   grid-area: comment-buttons;
   width: 18px;
   text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .comment-buttons {
+    width: 40px;
+  }
 }

@@ -76,11 +76,11 @@ class AllArticles extends Component {
           <option value="comment_count">Comments</option>
           <option value="votes">Votes</option>
         </select>
-        <div>
+        <section>
           {articles.map((article) => (
             <ArticleCard article={article} key={article.article_id} />
           ))}
-        </div>
+        </section>
       </>
     );
   }

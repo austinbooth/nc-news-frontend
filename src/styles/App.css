@@ -7,15 +7,11 @@ a {
   color: black;
 }
 
-a:visited {
-  color: #545a61;
-}
-
 button {
   border: 1px solid grey;
   border-radius: 12px;
   padding: 5px 10px;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #e7e9ed;
   cursor: pointer;
   font-size: 15px;
 }
@@ -36,9 +32,9 @@ select {
 
 label,
 select {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .error {
-  font-size: 30px;
+  font-size: 2rem;
 }

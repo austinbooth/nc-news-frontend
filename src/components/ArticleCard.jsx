@@ -17,12 +17,12 @@ const ArticleCard = ({ article }) => {
     <Link to={`/article/${article_id}`} className="article-card">
       <div className="articleCard">
         <h2>{title}</h2>
-        <h3>By {author}</h3>
         <div className="article-card-metadata">
-          <h3>{formatDate(created_at)}</h3>
-          <h3>{topic}</h3>
-          <h3>{votes} votes</h3>
-          <h3>{comment_count} comments</h3>
+          <p className="author">By {author}</p>
+          <p className="date">{formatDate(created_at)}</p>
+          <p className="topic">{topic}</p>
+          <p className="votes">{votes} votes</p>
+          <p className="comments">{comment_count} comments</p>
         </div>
       </div>
     </Link>

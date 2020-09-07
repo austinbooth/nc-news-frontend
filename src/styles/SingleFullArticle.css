@@ -37,6 +37,12 @@
   text-align: left;
 }
 
+@media only screen and (max-width: 768px) {
+  .article-comments-heading {
+    margin-left: 20px;
+  }
+}
+
 .article-meta-data * {
   margin-right: 15px;
 }
@@ -53,10 +59,10 @@
 
 .full-article p {
   text-align: justify;
+  /* font-size: 2rem; */
 }
 
 .up-down-vote-buttons button {
-  /* margin: 12px; */
   background-color: #efefef;
   border: none;
   padding: 0;
@@ -67,7 +73,13 @@
   grid-area: comment-buttons;
   width: 18px;
   text-align: center;
-  /* margin-right: 15px; */
+  /* margin-right: 30px; */
+}
+
+@media only screen and (max-width: 768px) {
+  .up-down-vote-buttons {
+    margin-right: 30px;
+  }
 }
 
 .full-article h2 {
