@@ -30,11 +30,11 @@ p button {
   margin-left: 10px;
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
   p button {
     margin-right: 15px;
   }
-}
+} */
 
 header p {
   margin-bottom: 12px;

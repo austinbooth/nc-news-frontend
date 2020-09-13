@@ -4,22 +4,23 @@
   justify-content: space-between;
 }
 
-@media only screen and (max-width: 768px) {
-  p.author {
-    grid-area: author;
-  }
-  p.date {
-    grid-area: date;
-  }
-  p.topic {
-    grid-area: topic;
-  }
-  p.votes {
-    grid-area: votes;
-  }
-  p.comments {
-    grid-area: comments;
-  }
+p.author {
+  grid-area: author;
+}
+p.date {
+  grid-area: date;
+}
+p.topic {
+  grid-area: topic;
+}
+p.votes {
+  grid-area: votes;
+}
+p.comments {
+  grid-area: comments;
+}
+
+@media only screen and (max-width: 1150px) {
   .article-card-metadata {
     display: grid;
     grid-template-columns: 2fr 2fr 1fr;
@@ -28,16 +29,26 @@
   }
 }
 
+@media only screen and (max-width: 820px) {
+  .article-card-metadata {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "author" "date" "topic" "votes" "comments";
+  }
+  .article-card-metadata p {
+    margin: 5px 0;
+  }
+}
+
 .article-comment,
 .articleCard {
   border: solid 2px grey;
   text-align: justify;
   padding: 15px;
-  margin: 0 auto 40px;
+  margin: 0 5% 40px;
   background-color: #efefef;
   border-radius: 4px;
   box-shadow: 5px 10px #888888;
-  width: 80%;
 }
 
 .vote-buttons-and-comment-body-section {
@@ -50,11 +61,11 @@
     "comment-buttons comment-body";
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
   .vote-buttons-and-comment-body-section {
     column-gap: 20px;
   }
-}
+} */
 
 .comment-body {
   grid-area: comment-body;
@@ -92,6 +103,12 @@
   justify-items: start;
 }
 
+@media only screen and (max-width: 720px) {
+  .comment-meta-data {
+    display: block;
+  }
+}
+
 .comment-meta-data p {
   margin-right: 3%;
   font-size: 14px;
@@ -106,8 +123,8 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
   .comment-buttons {
     width: 40px;
   }
-}
+} */

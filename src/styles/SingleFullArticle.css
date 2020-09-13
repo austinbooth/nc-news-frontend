@@ -6,6 +6,16 @@
   align-items: center;
 }
 
+@media only screen and (max-width: 670px) {
+  .article-meta-data {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  grid-template-areas: "comment-buttons article-author-image article-author" "article-published article-published article-topic";
+  text-align: left;
+  align-items: center;
+}
+}
+
 .article-author-image {
   grid-area: article-author-image;
   border-radius: 50%;
@@ -37,11 +47,11 @@
   text-align: left;
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
   .article-comments-heading {
     margin-left: 20px;
   }
-}
+} */
 
 .article-meta-data * {
   margin-right: 15px;
@@ -76,11 +86,11 @@
   /* margin-right: 30px; */
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
   .up-down-vote-buttons {
     margin-right: 30px;
   }
-}
+} */
 
 .full-article h2 {
   width: 100%;

@@ -1,20 +1,17 @@
-.App {
-  text-align: center;
-  display: grid;
-  grid-template-columns: 1fr minmax(768px, 900px) 1fr;
-  grid-template-areas:
-    ". header ."
-    ". nav ."
-    ". router .";
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-@media only screen and (max-width: 768px) {
-  button,
-  label,
-  select,
-  textarea,
+.App {
+  text-align: center;
+  margin: 0 15%;
+}
+
+@media only screen and (max-width: 420px) {
   .App {
-    font-size: 1.75rem;
+    margin: 0 5%;
   }
 }
 
