@@ -10,7 +10,7 @@ You can find the hosted API used here: https://nc-news-ab.herokuapp.com/api/
 
 ### Prerequisites
 
-To run this API on your machine, you will need Node.js installed on your machine.
+To run this on your machine, you will need Node.js installed on your machine.
 
 To install Node, go to: https://nodejs.org/en/download/ \
  The version required is a minimum of v. 13.8.0
