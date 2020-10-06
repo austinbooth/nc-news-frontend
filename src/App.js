@@ -7,6 +7,7 @@ import "./styles/SingleFullArticle.css";
 import "./styles/CommentForm.css";
 import "./styles/ArticleCardAndCommentCard.css";
 import "./styles/LoginPrompt.css";
+import "./styles/Footer.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import { Router } from "@reach/router";
@@ -14,6 +15,7 @@ import AllArticles from "./components/AllArticles";
 import SingleFullArticle from "./components/SingleFullArticle";
 import ErrorDisplay from "./components/ErrorDisplay";
 import LoginPrompt from "./components/LoginPrompt";
+import Footer from "./components/Footer";
 
 class App extends Component {
   state = {
@@ -72,6 +74,7 @@ class App extends Component {
           />
           <ErrorDisplay default err={{ status: 404, msg: "Path not found" }} />
         </Router>
+        <Footer />
       </div>
     );
   }
